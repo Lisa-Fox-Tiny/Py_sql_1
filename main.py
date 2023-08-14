@@ -111,28 +111,28 @@ with psycopg2.connect(database='base', user='postgres', password='123456912') as
                     SELECT c.id, c.first_name, c.last_name, c.email, p.phone FROM clients c
                     LEFT JOIN phone_numbers p ON c.id = p.client_id
                     ORDER BY c.id
-                """)
+                    """)
         print(curs.fetchall())
         change_client(curs, 1, "Иван", "Труд", "klijh54@gmail.com")
         curs.execute("""
-                            SELECT c.id, c.first_name, c.last_name, c.email, p.phone FROM clients c
-                            LEFT JOIN phone_numbers p ON c.id = p.client_id
-                            ORDER BY c.id
-                        """)
+                    SELECT c.id, c.first_name, c.last_name, c.email, p.phone FROM clients c
+                    LEFT JOIN phone_numbers p ON c.id = p.client_id
+                    ORDER BY c.id
+                    """)
         print(curs.fetchone())
         delete_phone(curs, 1)
         curs.execute("""
-                                    SELECT c.id, c.first_name, c.last_name, c.email, p.phone FROM clients c
-                                    LEFT JOIN phone_numbers p ON c.id = p.client_id
-                                    ORDER BY c.id
-                                """)
+                    SELECT c.id, c.first_name, c.last_name, c.email, p.phone FROM clients c
+                    LEFT JOIN phone_numbers p ON c.id = p.client_id
+                    ORDER BY c.id
+                    """)
         print(curs.fetchone())
         delete_client(curs, 1)
         curs.execute("""
-                                            SELECT c.id, c.first_name, c.last_name, c.email, p.phone FROM clients c
-                                            LEFT JOIN phone_numbers p ON c.id = p.client_id
-                                            ORDER BY c.id
-                                        """)
+                    SELECT c.id, c.first_name, c.last_name, c.email, p.phone FROM clients c
+                    LEFT JOIN phone_numbers p ON c.id = p.client_id
+                    ORDER BY c.id
+                    """)
         print(curs.fetchall())
         print(find_client(curs, 'Кирилл'))
 conn.close()
